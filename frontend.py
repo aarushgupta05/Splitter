@@ -23,7 +23,7 @@ st.markdown(
         width: 100%;
     }
     .bodytext {
-        font-size: 18px;
+        font-size: 30px;
         text-align: justify;
         color: #bb2f85;
     }
