@@ -46,7 +46,6 @@ st.markdown(
 def homepage():
     st.markdown('<h1 class="heading1">StemFlow</h1>', unsafe_allow_html=True)
     st.markdown('<h2 class="bodytext">StemFlow is a high-level machine learning, source separation based model that uses deep neural networks to split musical compositions into individual track stems. Go to "about StemFlow" for more information. </t>', unsafe_allow_html=True)
-    st.image("logo.png")
 def about_stemflow():
      st.markdown('<h1 class="heading1">About StemFlow</h1>', unsafe_allow_html=True)
      st.markdown('<h2 class="bodytext">StemFlow operates using the demucs model(created by Meta) the repository of which can be found below. </t>', unsafe_allow_html=True)
