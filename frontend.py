@@ -54,15 +54,6 @@ def about_stemflow():
      st.markdown('<h2 class="bodytext">The demucs stem splitter uses a U-Net architecture to make it extremely effective. U-Net architecture uses an encoder-decoder system. The encoder extracts features from the input (the mixed audio) and reduces its dimensionality. The decoder then reconstructs the individual sources from these features. The key innovation about the U-Net is the skip connections, which can allow fine details to be preserved.</t>',unsafe_allow_html=True)
      st.markdown('<h2 class="bodytext">Another feature that Demucs employs is Recurrent Neural Networks. This is especially useful for stem splitting as they can access past data and use it to make predictions for what is going to happen next. This makes it extremely efficient at splitting tracks, as it can recognise and predict what sounds each instrument in the song is going to make next.</t>',unsafe_allow_html=True)
 
-page = st.sidebar.radio("Navigate:", ("Home", "About StemFlow"))
-st.sidebar.markdown("---")
-
-if page=="Home":
-     homepage()
-
-if page=="About StemFlow":
-     about_stemflow()
-
 # Model Processing
 def model():
     # Load the Demucs Model
