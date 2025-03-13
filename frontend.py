@@ -45,8 +45,7 @@ st.markdown(
 def homepage():
     col1,col2=st.columns([0.70, 0.30])
     with col2:
-        st.image("logo(nameless).png")
-        st.markdown('<h4 class="heading1">StemFlow</h4>', unsafe_allow_html=True)
+        st.image("logo.png", width=50)
     st.markdown('<h1 class="heading1">StemFlow</h1>', unsafe_allow_html=True)
     st.markdown('<h2 class="bodytext">StemFlow is a high-level machine learning, source separation based model that uses deep neural networks to split musical compositions into individual track stems. Go to "about StemFlow" for more information. </t>', unsafe_allow_html=True)
 def about_stemflow():
