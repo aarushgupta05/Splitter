@@ -176,6 +176,7 @@ def model():
 # Sidebar Navigation
 page = st.sidebar.radio("Navigate:", ("Home", "About StemFlow", "StemFlow Model"))
 st.sidebar.markdown("---")
+st.sidebar.image("logo.png")
 
 if page == "Home":
     homepage()
