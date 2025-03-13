@@ -43,7 +43,7 @@ st.markdown(
 
 
 def homepage():
-    col1,col2=st.columns([0.85, 0.15])
+    col1,col2=st.columns([0.70, 0.30])
     with col2:
         st.image("logo(nameless).png")
         st.markdown('<h4 class="heading1">StemFlow</h4>', unsafe_allow_html=True)
