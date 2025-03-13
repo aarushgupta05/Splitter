@@ -140,29 +140,36 @@ def model():
                 with open(temp_file_path, "wb") as temp_file:
                     temp_file.write(uploaded_file.read())
 
-                wav_file_path = convert_to_wav(temp_file_path)
-                if not wav_file_path:
-                    continue
-
-                wav, sample_rate = load_audio(wav_file_path)
-                if wav is None:
-                    continue
-
-                with st.spinner("AI is processing your file..."):
-                    stems = separate_stems(model, wav, device)
-                    if stems is None:
+                try:
+                    wav_file_path = convert_to_wav(temp_file_path)
+                    if not wav_file_path:
                         continue
 
-                stem_names = ["drums", "bass", "other", "vocals"]
-                stem_files = save_stems_as_bytes(stems, sample_rate, stem_names)
+                    wav, sample_rate = load_audio(wav_file_path)
+                    if wav is None:
+                        continue
 
-                st.success(f"Stem separation complete for {uploaded_file.name}!")
-                for name, buffer in stem_files.items():
-                    st.audio(buffer, format="audio/wav")
-                    st.download_button(f"Download {name}", buffer, file_name=f"{uploaded_file.name}_{name}.wav")
+                    with st.spinner("AI is processing your file..."):
+                        stems = separate_stems(model, wav, device)
+                        if stems is None:
+                            continue
 
-                os.unlink(temp_file_path)
-                os.unlink(wav_file_path)
+                    stem_names = ["drums", "bass", "other", "vocals"]
+                    stem_files = save_stems_as_bytes(stems, sample_rate, stem_names)
+
+                    st.success(f"Stem separation complete for {uploaded_file.name}!")
+                    for idx, (name, buffer) in enumerate(stem_files.items()):
+                        correct_name = stem_names[idx % len(stem_names)]
+                        st.audio(buffer, format="audio/wav", start_time=0)
+                        st.download_button(f"Download {correct_name}", buffer, file_name=f"{uploaded_file.name}_{correct_name}.wav")
+
+                except Exception as e:
+                    st.error(f"An error occurred with {uploaded_file.name}: {e}")
+                finally:
+                    # Cleanup temporary files
+                    os.unlink(temp_file_path)
+                    if 'wav_file_path' in locals() and os.path.exists(wav_file_path):
+                        os.unlink(wav_file_path)
 
     main()
 
