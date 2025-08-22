@@ -1,3 +1,4 @@
-# Splitter
-Stem Splitter using Demucs Model
+# StemFlow
+Stem Splitter using Demucs Model by Meta
+
 https://splitterbyaarush.streamlit.app/
